@@ -14,7 +14,7 @@ app.use(morgan('combined'));
 // จัดการกับ Request ต่างๆ ที่เข้ามา เมื่อเข้ามาจะส่ง/แสดงอะไรให้เขาดู
 app.get("/", (req,res) =>{
 
-    res.send('Hello borntoDev Hiiii!!');
+    res.send('Hello borntoDev Hi!!');
 
 })
 
