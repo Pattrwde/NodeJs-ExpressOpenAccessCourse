@@ -10,7 +10,7 @@ const app = express();
 // const port = 3000;   // app run port ? ห้ามทับกับ port อื่นที่ใช้งานอยู่ในเครื่อง
 const PORT = process.env.PORT || 4000;
 //สร้างตัวแปรของ product router 
-const productsRouter = express.Router();
+const productRouter = express.Router();
 
 // เรียกใช้งาน morgan
 app.use(morgan('combined'));
@@ -23,14 +23,16 @@ app.set("views","./src/views");
 app.set("view engine","ejs")
 
 // app.get("/products"); //ไว้ใช้รับค่า
-// app.use("/products",productsRouter);
-productsRouter.route("/").get((req, res) => {
+
+productRouter.route("/").get((req, res) => {
    res.send("page Product"); 
 });
 
-productsRouter.route("/1").get((req, res) => {
+productRouter.route("/1").get((req, res) => {
     res.send("page Product1"); 
  }); 
+
+app.use("/products",productRouter)
 
 // จัดการกับ Request ต่างๆ ที่เข้ามา เมื่อเข้ามาจะส่ง/แสดงอะไรให้เขาดู
 app.get("/", (req,res) =>{
