@@ -23,7 +23,14 @@ app.set("views","./src/views");
 app.set("view engine","ejs")
 
 // app.get("/products"); //ไว้ใช้รับค่า
-app.use("/products",productsRouter);
+// app.use("/products",productsRouter);
+productsRouter.route("/").get((req, res) => {
+   res.send("page Product"); 
+});
+
+productsRouter.route("/1").get((req, res) => {
+    res.send("page Product1"); 
+ }); 
 
 // จัดการกับ Request ต่างๆ ที่เข้ามา เมื่อเข้ามาจะส่ง/แสดงอะไรให้เขาดู
 app.get("/", (req,res) =>{
