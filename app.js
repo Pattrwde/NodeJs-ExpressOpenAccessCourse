@@ -9,6 +9,8 @@ const path = require('path');
 const app = express();   
 // const port = 3000;   // app run port ? ห้ามทับกับ port อื่นที่ใช้งานอยู่ในเครื่อง
 const PORT = process.env.PORT || 4000;
+//สร้างตัวแปรของ product router 
+const productsRouter = express.Router();
 
 // เรียกใช้งาน morgan
 app.use(morgan('combined'));
@@ -19,6 +21,9 @@ app.use(express.static(path.join(__dirname,"/public/")));
 // เรียกใช้งาน ejs
 app.set("views","./src/views");
 app.set("view engine","ejs")
+
+// app.get("/products"); //ไว้ใช้รับค่า
+app.use("/products",productsRouter);
 
 // จัดการกับ Request ต่างๆ ที่เข้ามา เมื่อเข้ามาจะส่ง/แสดงอะไรให้เขาดู
 app.get("/", (req,res) =>{
